@@ -7,5 +7,7 @@ class Post < ActiveRecord::Base
     valid = [/Won't Believe/, /Secret/, /Top \d+/, /Guess/].any? do |regex|
       regex.match(value)
     end
+
+    record.errors.add(attr, 'Must be a clickbait title') unless valid
   end
 end
